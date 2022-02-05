@@ -5,7 +5,7 @@
     Todos los multiplos de 3 y 5 deben imprimir Fizz Buzz
  */
 
-for (let i = 0; i < 100; i++) {
+/* for (let i = 0; i < 100; i++) {
 
     if (i === 0) {
         continue;
@@ -21,3 +21,34 @@ for (let i = 0; i < 100; i++) {
 
 
 }
+ */
+
+//Fibonnacci
+
+
+function fibonacci(numLim) {
+
+    let a = 0, b = 0, c = 0;
+    for (let i = 1; i <= numLim; i++) {
+
+        if (i == 1) {
+            console.log('1');
+        }
+
+        if (i == 2) {
+            a = 1;
+            b = 1;
+            console.log(`${a}`);
+        }
+
+        if (i >= 3) {
+            c = a + b;
+            a = b;
+            b = c;
+            console.log(`${c}`);
+        }
+    }
+}
+
+
+fibonacci(7);
