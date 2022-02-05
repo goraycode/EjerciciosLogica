@@ -25,7 +25,7 @@
 
 //Fibonnacci
 
-
+/* 
 function fibonacci(numLim) {
 
     let a = 0, b = 0, c = 0;
@@ -51,4 +51,24 @@ function fibonacci(numLim) {
 }
 
 
-fibonacci(7);
+fibonacci(7); */
+
+
+
+//Factorial de un número
+//Con arrow function
+
+
+let factNum = ((num) => {
+    let x = 1;
+    for (let i = 1; i <= num; i++) {
+        x = x * i;
+    }
+    console.log(`El factorial del ${num} es ${x}`);
+});
+
+
+factNum(4);
+
+
+
