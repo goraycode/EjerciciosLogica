@@ -59,7 +59,7 @@ fibonacci(7); */
 //Con arrow function
 
 
-let factNum = ((num) => {
+/* let factNum = ((num) => {
     let x = 1;
     for (let i = 1; i <= num; i++) {
         x = x * i;
@@ -68,7 +68,40 @@ let factNum = ((num) => {
 });
 
 
-factNum(4);
+factNum(4); */
 
 
 
+/* Práctica del DOM
+    Cerrar y mostrar más cards
+*/
+
+const btnMostrarOcultar = document.querySelector('.btnMostrarOcultar');
+
+const cards = document.querySelector('section.hacer .contenedor-cards');
+
+//Evento cuando da click
+btnMostrarOcultar.addEventListener('click', mostrarOcultarCards);
+
+
+
+for (let i = 0; i < cards.children.length; i++) {
+
+    if (i > 2) {
+        cards.children[i].classList.add('oculto');
+    }
+}
+
+function mostrarOcultarCards() {
+
+    let oculto;
+    for (let i = 0; i < cards.children.length; i++) {
+
+        if (i > 2) {
+            oculto = cards.children[i].classList.toggle('oculto');
+        }
+    }
+
+
+    btnMostrarOcultar.textContent = oculto ? "Ver más" : "Ver menos";
+}
