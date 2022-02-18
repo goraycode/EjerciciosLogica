@@ -164,16 +164,16 @@ main > section {
   padding: 1rem 2rem;
 }
 
-.btnMostrarOcultar:hover{
-    background-color: #ffffff;
-    color: #484848;
+.btnMostrarOcultar:hover {
+  background-color: #ffffff;
+  color: #484848;
 }
 
-.activo{
+.activo {
   display: block;
 }
 
-.oculto{
+.oculto {
   display: none;
 }
 
@@ -345,4 +345,73 @@ main > section {
 }
 .sociales ul li span {
   display: none;
+}
+
+/*====================================================
+FORMULARIO
+======================================================*/
+
+.form {
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.2rem;
+}
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  display: block;
+  background-color: #598dda;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  border: thin #598dda solid;
+}
+
+.button-in {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+.button:hover {
+  background-color: #ffffff;
+  color: #598dda;
+}
+
+.button-reset {
+  display: block;
+  background-color: greenyellow;
+  color: black;
+  border: none;
+  padding: 1rem;
+  border: thin greenyellow solid;
+}
+.button-reset:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, greenyellow 0%, green 100%);
+}
+
+.border-accept {
+  border: thin #598dda solid;
+  padding: 0.3rem;
+}
+.border-ignorado {
+  border: thin red solid;
 }
