@@ -109,7 +109,7 @@
     <!--.columnas4 cuadros-->
   </section>
 
-  <form action="" class="form contenedor">
+  <!-- <form action="" class="form contenedor">
     <div class="field">
       <label for="name">Ingrese su nombre</label>
       <input type="text" name="name" id="name" autocomplete="off">
@@ -144,10 +144,10 @@
       <input type="submit" value="Reset formulario" class="button-reset">
     </div>
 
-  </form>
+  </form> -->
 
-
-  <form action="" class="contenedor" id="formulario">
+  <!-- 
+  <form action="" class="contenedor" id="formulario"><
     <div class="field">
       <label for="large">Largo: </label>
       <input type="number" name="large" id="large" min="1">
@@ -166,6 +166,86 @@
     </div>
 
     <input type="submit" value="Ver consejo">
+  </form> -->
+
+
+  <form action="" class="contenedor" id="formulario">
+    <div class="columnasDos">
+      <div class="vehiculo">
+        <h3>Vehiculo</h3>
+        <div class="contenedor__field">
+          <div class="transporte">
+            <div class="field">
+              <input type="radio" checked name="vehiculo" value="camion">
+              <label for="camion">Camión</label>
+            </div>
+            <div class="field">
+              <input type="radio" name="vehiculo" value="bicicleta">
+              <label for="bicicleta">Bicicleta</label>
+            </div>
+            <div class="field">
+              <input type="radio" name="vehiculo" value="minibus">
+              <label for="minibus">Minibus</label>
+            </div>
+          </div>
+          <div class="anioPrecio">
+            <div class="field">
+              <label for="anioFabricacion">Año de fabricación</label>
+              <select name="anioFabricacion" id="anioFabricacion">
+                <option value="" selected disabled>Seleccione...</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="precioBase">Precio base: </label>
+              <input type="number" name="precioBase" id="precioBase" min="100">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="propietario">
+        <h3>Propietario</h3>
+        <div class="contenedor__propietario">
+          <div class="field">
+            <label for="nombres">Nombres: </label>
+            <input type="text" name="nombres" id="nombres">
+          </div>
+          <div class="field">
+            <label for="apellidos">Apellidos: </label>
+            <input type="text" name="apellidos" id="apellidos">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <input type="submit" value="Realizar venta">
+      <input type="button" class="buttonReset" value="Nueva venta">
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr class="table__head">
+          <th>Tipo de vehículo</th>
+          <th>Marca</th>
+          <th>Precio base</th>
+          <th>Precio total</th>
+          <th>Año de fábrica</th>
+          <th>Propietario</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="table__tbody">
+          <td>Tipo de vehículo</td>
+          <td>Marca</td>
+          <td>Precio base</td>
+          <td>Precio total</td>
+          <td>Año de fábrica</td>
+          <td>Propietario</td>
+        </tr>
+      </tbody>
+    </table>
   </form>
 
   <!--  <script src="js/01-app.js"></script>  -->
@@ -178,6 +258,8 @@
   <!--  <script src="js/08-app.js"></script> -->
   <!-- <script src="js/09-app.js"></script> -->
   <script src="js/10-app.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 

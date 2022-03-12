@@ -1,5 +1,108 @@
-//clase padre
+//variables
+const formulario = document.querySelector('#formulario');
+const anioFabrica = document.querySelector('#anioFabricacion');
+const precioBase = document.querySelector('#precioBase');
 
+//para agregar un campo más de acuerdo al vehículo que se seleccionó
+const anioPrecio = document.querySelector('.anioPrecio');
+
+
+const nombres = document.querySelector('#nombres');
+const apellidos = document.querySelector('#apellidos');
+
+
+
+//eventos
+eventListeners();
+function eventListeners() {
+
+    document.addEventListener('DOMContentLoaded', interfazUsuario)
+
+    formulario.addEventListener('submit', validarDatos);
+}
+
+
+class UI {
+
+    preguntaAdicional(title, tipoVehiculo) {
+
+        Swal.fire({
+            title: title,
+            input: 'number',
+            inputPlaceholder: '500',
+        });
+
+        const budgetContainer = document.querySelector('.swal2-container');
+        const budgetInput = document.querySelector('.swal2-input');
+
+        budgetContainer.addEventListener('click', (e) => {
+            const budgetValue = Number(budgetInput.value);
+
+            if (e.target.classList.contains('swal2-container') || e.target.classList.contains('swal2-confirm')) {
+                if (budgetValue === '' || budgetValue <= 0 || isNaN(budgetValue)) {
+                    window.location.reload();
+                } else {
+                    const nuevoPropietario = new Propietario(nombres.value, apellidos.value);
+                    switch (tipoVehiculo) {
+                        case 'camion':
+                            const nuevoCamion = new Camion('Volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
+                            imprimirFactura(nuevoCamion, tipoVehiculo, nuevoPropietario);
+                            break;
+
+                        case 'bicicleta':
+                            const nuevaBici = new Bicicleta('Volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue), true);
+                            imprimirFactura(nuevaBici, tipoVehiculo, nuevoPropietario);
+                            break;
+                        case 'minibus':
+                            const nuevaMinibus = new Minibus('volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
+                            imprimirFactura(nuevaMinibus, tipoVehiculo, nuevoPropietario);
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
+            if (e.target.classList.contains('swal2-popup')) {
+                return;
+            }
+        });
+
+    }
+
+    llenarSelect() {
+        let maxAnio = new Date().getFullYear();
+
+        for (let i = maxAnio; i >= 2000; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+
+            anioFabrica.appendChild(option);
+        }
+
+    }
+
+    impresionFactura(){
+        
+    }
+
+
+    mensajeError() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Faltan llenar campos',
+        })
+    }
+}
+//instanciamos la clase
+const ui = new UI();
+
+
+
+
+//clase padre
 class Vehiculo {
     constructor(marca, anioFabrica, precioBase) {
         this.marca = marca;
@@ -142,6 +245,10 @@ class Factura {
         this.precioTotal = 0;
         this.anioFabrica = 0;
         this.propietario = '';
+        this.pesoTransporte = 0;
+        this.cantAros = 0;
+        this.cantPasajeros = 0;
+
     }
     imprimirFactura() {
 
@@ -156,29 +263,38 @@ class Factura {
     }
 }
 
+interfazUsuario();
+function interfazUsuario() {
+    ui.llenarSelect();
+}
 
 
-function realizarVenta(tipoVehiculo, nombres, apellidos, marca, anioFabrica, precioBase) {
 
-    const nuevoPropietario = new Propietario(nombres, apellidos);
+function validarDatos(e) {
+    e.preventDefault();
+    const tipoVehiculo = document.querySelector('input[name="vehiculo"]:checked').value;
 
+    if (anioFabrica.value === '' || precioBase.value === '' || nombres.value === '' || apellidos.value === '') {
+        ui.mensajeError();
+    } else {
+        realizarVenta(tipoVehiculo);
+    }
+
+
+}
+
+
+function realizarVenta(tipoVehiculo) {
     switch (tipoVehiculo) {
         case 'camion':
-            let pesoTransporte = Number(prompt('Ingrese peso carga'));
-            const nuevoCamion = new Camion(marca, anioFabrica, precioBase, pesoTransporte);
-
-            imprimirFactura(nuevoCamion, tipoVehiculo, nuevoPropietario);
+            ui.preguntaAdicional('Ingrese el peso de carga', tipoVehiculo);
 
             break;
         case 'bicicleta':
-            let cantAros = Number(prompt('Ingrese la cantidad de aros'));
-            const nuevaBici = new Bicicleta(marca, anioFabrica, precioBase, cantAros, true);
-            imprimirFactura(nuevaBici, tipoVehiculo, nuevoPropietario);
+            ui.preguntaAdicional('Ingrese la cantidad de aros', tipoVehiculo);
             break;
         case 'minibus':
-            let cantPasajeros = Number(prompt('Ingrese la cantidad de pasajeros'));
-            const nuevaMinibus = new Minibus(marca, anioFabrica, precioBase, cantPasajeros);
-            imprimirFactura(nuevaMinibus, tipoVehiculo, nuevoPropietario);
+            ui.preguntaAdicional('Ingrese la capacidad de pasajeros', tipoVehiculo);
         default:
             break;
     }
@@ -198,5 +314,6 @@ function imprimirFactura(vehiculoNuevo, tipoVehiculo, propietarioNuevo) {
 
 
 //creamos una nueva venta
-let comprarVehiculo = prompt('Ingrese el tipo de vehículo a comprar');
-realizarVenta(comprarVehiculo, 'Gerson Jofre', 'Aguedo Yanac', 'Volvo', 2020, 2000);
+//let comprarVehiculo = prompt('Ingrese el tipo de vehículo a comprar');
+//camion
+//realizarVenta('camion', 'Gerson Jofre', 'Aguedo Yanac', 'Volvo', 2020, 2000);
