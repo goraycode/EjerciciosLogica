@@ -2,6 +2,7 @@
 const formulario = document.querySelector('#formulario');
 const anioFabrica = document.querySelector('#anioFabricacion');
 const precioBase = document.querySelector('#precioBase');
+const marca = document.querySelector('#marca');
 
 //para agregar un campo más de acuerdo al vehículo que se seleccionó
 const anioPrecio = document.querySelector('.anioPrecio');
@@ -10,6 +11,11 @@ const anioPrecio = document.querySelector('.anioPrecio');
 const nombres = document.querySelector('#nombres');
 const apellidos = document.querySelector('#apellidos');
 
+
+const buttonReset = document.querySelector('input[type="button"]');
+buttonReset.addEventListener('click', () => {
+    formulario.reset();
+})
 
 
 //eventos
@@ -45,17 +51,20 @@ class UI {
                     const nuevoPropietario = new Propietario(nombres.value, apellidos.value);
                     switch (tipoVehiculo) {
                         case 'camion':
-                            const nuevoCamion = new Camion('Volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
+                            const nuevoCamion = new Camion(marca.value, Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
                             imprimirFactura(nuevoCamion, tipoVehiculo, nuevoPropietario);
+                            this.resetFormulario();
                             break;
 
                         case 'bicicleta':
-                            const nuevaBici = new Bicicleta('Volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue), true);
+                            const nuevaBici = new Bicicleta(marca.value, Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue), true);
                             imprimirFactura(nuevaBici, tipoVehiculo, nuevoPropietario);
+                            this.resetFormulario();
                             break;
                         case 'minibus':
-                            const nuevaMinibus = new Minibus('volvo', Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
+                            const nuevaMinibus = new Minibus(marca.value, Number(anioFabrica.value), Number(precioBase.value), Number(budgetValue));
                             imprimirFactura(nuevaMinibus, tipoVehiculo, nuevoPropietario);
+                            this.resetFormulario();
                             break;
                         default:
                             break;
@@ -81,10 +90,7 @@ class UI {
             anioFabrica.appendChild(option);
         }
 
-    }
 
-    impresionFactura(){
-        
     }
 
 
@@ -94,6 +100,10 @@ class UI {
             title: 'Oops...',
             text: 'Faltan llenar campos',
         })
+    }
+
+    resetFormulario(){
+        formulario.reset();
     }
 }
 //instanciamos la clase
@@ -252,14 +262,22 @@ class Factura {
     }
     imprimirFactura() {
 
-        return `
-            Tipo de vehículo: ${this.tipoVehiculo} \n
-            Marca: ${this.marca} \n
-            Año de fábrica: ${this.anioFabrica} \n
-            Precio Base: ${this.precioBase} \n
-            Precio Total: ${this.precioTotal} \n
-            Propietario: ${this.propietario}
+        const tBody = document.querySelector('.tableBody');
+        const row = document.createElement('tr');
+        row.classList.add('table__tbody');
+        row.innerHTML = `
+        <td>${this.tipoVehiculo}</td>
+        <td>${this.marca}</td>
+        <td>${this.precioBase}</td>
+        <td>${this.precioTotal}</td>
+        <td>${this.anioFabrica}</td>
+        <td>${this.propietario}</td>
+        
         `;
+
+        tBody.appendChild(row);
+
+
     }
 }
 
@@ -274,7 +292,7 @@ function validarDatos(e) {
     e.preventDefault();
     const tipoVehiculo = document.querySelector('input[name="vehiculo"]:checked').value;
 
-    if (anioFabrica.value === '' || precioBase.value === '' || nombres.value === '' || apellidos.value === '') {
+    if (anioFabrica.value === '' || precioBase.value === '' || nombres.value === '' || apellidos.value === '' || marca.value === '') {
         ui.mensajeError();
     } else {
         realizarVenta(tipoVehiculo);
@@ -309,11 +327,5 @@ function imprimirFactura(vehiculoNuevo, tipoVehiculo, propietarioNuevo) {
     facturaNueva.precioTotal = vehiculoNuevo.calcularPrecio();
     facturaNueva.anioFabrica = vehiculoNuevo.anioFabrica;
     facturaNueva.propietario = propietarioNuevo.mostrarDatos();
-    console.log(facturaNueva.imprimirFactura());
+    facturaNueva.imprimirFactura();
 }
-
-
-//creamos una nueva venta
-//let comprarVehiculo = prompt('Ingrese el tipo de vehículo a comprar');
-//camion
-//realizarVenta('camion', 'Gerson Jofre', 'Aguedo Yanac', 'Volvo', 2020, 2000);
