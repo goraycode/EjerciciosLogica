@@ -517,7 +517,29 @@ Propuesto 1
 .botonFormulario {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: none;
+  border: 1px solid gainsboro;
   box-shadow: 3px 3px 5px black;
   font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+#Magenta:hover {
+  background-color: magenta;
+}
+
+#Rojo:hover {
+  background-color: red;
+}
+
+#Verde:hover {
+  background-color: greenyellow;
+}
+
+#Amarillo:hover {
+  background-color: yellow;
+}
+
+#Cyan:hover {
+  background-color: cyan;
 }
