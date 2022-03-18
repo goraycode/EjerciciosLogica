@@ -501,3 +501,23 @@ select {
 .table__tbody td {
   border: 0.5px solid white;
 }
+
+/*====================================================
+Propuesto 1
+======================================================*/
+.botones {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.botonFormulario {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 3px 3px 5px black;
+  font-size: 1rem;
+}
