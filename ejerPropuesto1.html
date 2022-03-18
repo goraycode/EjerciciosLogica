@@ -10,44 +10,62 @@
 </head>
 
 <body>
-    <h1>Propuesto 1 y 2</h1>
-    <p>Del 1
-        Escribe un programa que contenga un formulario con cinco botones. Cada uno de los botones debe tener como
-        etiqueta el nombre del color y al pulsarlo pondrá el color del fondo del documento del mismo color que lo indica
-    </p>
+    <h2>Propuesto 1 y 2</h1>
+        <p>Del 1
+            Escribe un programa que contenga un formulario con cinco botones. Cada uno de los botones debe tener como
+            etiqueta el nombre del color y al pulsarlo pondrá el color del fondo del documento del mismo color que lo
+            indica
+        </p>
 
-    <p> Del 2
-        Como ampliación del ejercicio anterior, añade a los cinco botones, la posibilidad de elegir el cambio de color
-        para el fondo del documento o para el fondo de una capa situada en la esquina superior derecha del documento.
-    </p>
-    <form action="" class="form" id="formularioBotones">
-        <div class="botones">
-            <button class="botonFormulario" id="Magenta">Magenta</button>
-            <button class="botonFormulario" id="Rojo">Rojo</button>
-            <button class="botonFormulario" id="Verde">Verde</button>
-            <button class="botonFormulario" id="Amarillo">Amarillo</button>
-            <button class="botonFormulario" id="Cyan">Cyan</button>
+        <p> Del 2
+            Como ampliación del ejercicio anterior, añade a los cinco botones, la posibilidad de elegir el cambio de
+            color
+            para el fondo del documento o para el fondo de una capa situada en la esquina superior derecha del
+            documento.
+        </p>
+        <form action="" class="form" id="formularioBotones">
+            <div class="botones">
+                <button class="botonFormulario" id="Magenta">Magenta</button>
+                <button class="botonFormulario" id="Rojo">Rojo</button>
+                <button class="botonFormulario" id="Verde">Verde</button>
+                <button class="botonFormulario" id="Amarillo">Amarillo</button>
+                <button class="botonFormulario" id="Cyan">Cyan</button>
+            </div>
+
+            <div class="radios">
+                <div class="campo">
+                    <input type="radio" name="fondo" checked value="documento" id="documento">
+                    <label for="documento">Fondo del documento</label>
+                </div>
+                <div class="campo">
+                    <input type="radio" name="fondo" value="capa" id="capa">
+                    <label for="capa">Fondo de la capa</label>
+                </div>
+            </div>
+        </form>
+
+        <!-- Caja en la parte superior derecha -->
+        <div class="box">
+
         </div>
 
-        <div class="radios">
+        <h2>Propuesto 3</h2>
+
+        <form action="" id="formEdad" class="form">
             <div class="campo">
-                <input type="radio" name="fondo" checked value="documento" id="documento">
-                <label for="documento">Fondo del documento</label>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre">
             </div>
             <div class="campo">
-                <input type="radio" name="fondo" value="capa" id="capa">
-                <label for="capa">Fondo de la capa</label>
+                <label for="edad">Edad: </label>
+                <input type="text" name="edad" id="edad">
             </div>
-        </div>
-    </form>
+            <input type="submit" value="Ver resultado" class="botonFormulario">
+        </form>
 
-    <!-- Caja en la parte superior derecha -->
-    <div class="box">
-
-    </div>
-
-   <!--  <script src="js/12-app.js"></script> -->
-    <script src="js/13-app.js"></script>
+        <!--  <script src="js/12-app.js"></script> -->
+        <!-- <script src="js/13-app.js"></script> -->
+        <script src="js/14-app.js"></script>
 </body>
 
 </html>
