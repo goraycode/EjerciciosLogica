@@ -7,7 +7,8 @@ const buttonCyan = document.querySelector('#Cyan');
 
 
 //eventos
-buttonMagenta.addEventListener('click', () => {
+buttonMagenta.addEventListener('click', (e) => {
+    e.preventDefault();
     document.body.style.backgroundColor = 'magenta';
 });
 

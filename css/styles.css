@@ -505,6 +505,13 @@ select {
 /*====================================================
 Propuesto 1
 ======================================================*/
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 .botones {
   max-width: 90%;
   margin: 0 auto;
@@ -542,4 +549,14 @@ Propuesto 1
 
 #Cyan:hover {
   background-color: cyan;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2rem;
+  border: 0.1rem solid black;
+  width: 10rem;
+  height: 10rem;
 }
