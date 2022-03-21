@@ -16,12 +16,16 @@ function validarDatos(e) {
         divMensaje('Faltan llenar campos', 'error');
     } else {
         divMensaje(`Ud. ${nombre.value} ha vivido hasta el momento ${calculoDiasVividos(edad.value)} días`, 'success');
+        resetFormulario();
     }
 }
 
 function calculoDiasVividos(edad) {
     let diasVividos = edad * 365;
     return diasVividos;
+}
+function resetFormulario() {
+    formulario.reset();
 }
 
 function divMensaje(mensaje, tipo) {
