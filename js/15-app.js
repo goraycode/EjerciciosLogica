@@ -56,6 +56,7 @@ function contenedorImg(option) {
 
 function alternarImagen(imagen, option) {
     const num = Number(option);
+
     imagen.src = `img/hacer${num}.jpg`;
     setTimeout(() => {
         imagen.src = `img/populares${num}.jpg`;
