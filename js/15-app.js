@@ -22,17 +22,17 @@ function contenedorImg(option) {
     console.log(option);
     switch (option) {
         case '1':
-            img.src = 'img/hacer1.jpg';
+            alternarImagen(img, option);
             break;
         case '2':
-            img.src = 'img/hacer2.jpg';
+            alternarImagen(img, option);
             break;
 
         case '3':
-            img.src = 'img/hacer3.jpg';
+            alternarImagen(img, option);
             break;
         case '4':
-            img.src = 'img/hacer4.jpg';
+            alternarImagen(img, option);
             break;
 
         default:
@@ -52,3 +52,12 @@ function contenedorImg(option) {
     formSelect.appendChild(div);
 }
 
+
+
+function alternarImagen(imagen, option) {
+    const num = Number(option);
+    imagen.src = `img/hacer${num}.jpg`;
+    setTimeout(() => {
+        imagen.src = `img/populares${num}.jpg`;
+    }, 1000);
+}
