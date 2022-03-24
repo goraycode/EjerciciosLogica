@@ -74,6 +74,6 @@ class sumaImpares {
 }
 
 //instanciua de la clase
-const sImpares = new sumaImpares(7);
+const sImpares = new sumaImpares(10);
 console.log(sImpares.calcularSuma());
 
