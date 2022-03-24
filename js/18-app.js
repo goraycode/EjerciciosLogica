@@ -33,5 +33,5 @@ class compraHelados {
 }
 
 
-const comprarHelados = new compraHelados(47);
+const comprarHelados = new compraHelados(60);
 console.log(comprarHelados.calcularObsequio());
