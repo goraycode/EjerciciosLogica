@@ -34,7 +34,6 @@ class calcularNumero {
         }
 
         for (let i = 2; i < this.numero / 2; i++) {
-            console.log(i);
             if (this.numero % i == 0) {
                 return `${this.numero} es compuesto`;
             }
@@ -47,3 +46,34 @@ class calcularNumero {
 //isntancia de la clase calcularNumero
 const evaluarNumero = new calcularNumero(7);
 console.log(evaluarNumero.calcularPrimo());
+
+
+
+
+class sumaImpares {
+    constructor(N) {
+        this.numero = N;
+    }
+
+    calcularSuma() {
+        this.mostrarImpares();
+        this.numero = Math.pow(this.numero, 2);
+        return `La suma de número impares es: ${this.numero}`;
+
+    }
+
+    mostrarImpares() {
+        //mostramos todos los impares hasta el número ingresado
+        for (let i = 0; i <= 2 * this.numero; i++) {
+
+            if (i % 2 !== 0) {
+                console.log(i);
+            }
+        }
+    }
+}
+
+//instanciua de la clase
+const sImpares = new sumaImpares(7);
+console.log(sImpares.calcularSuma());
+
