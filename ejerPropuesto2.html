@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Ejercicio propuesto</title>
   </head>
   <body>
@@ -15,6 +15,54 @@
       <br />
       ejemplo: aaabccc -> abc | aurora -> auro
     </p>
+
+    <form action="" id="formulario">
+      <div class="columnasDos">
+        <div class="campo">
+          <label for="codigo">Ingrese su código</label>
+          <input type="text" id="codigo" />
+        </div>
+        <div class="campo">
+          <label for="nombre">Ingrese su nombre</label>
+          <input type="text" id="nombre" />
+        </div>
+        <div class="campo">
+          <label for="area">Seleccione su area</label>
+          <select name="area" id="area">
+            <option value="" selected disabled>
+              Seleccione...
+            </option>
+            <option value="Planificacion">Planificacion</option>
+            <option value="Ventas">Ventas</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="tiempo">Ingrese la cantidad de años trabajado</label>
+          <input type="number" name="tiempo" id="tiempo" min="1" />
+        </div>
+        <div class="campo">
+          <label for="area">Seleccione su condición</label>
+          <select name="area" id="area">
+            <option value="" selected disabled>
+              Seleccione...
+            </option>
+            <option value="Contratado">Contratado</option>
+            <option value="Estable">Estable</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="sueldo">Ingrese el sueldo base</label>
+          <input type="number" name="sueldo" id="sueldo" min="1" />
+        </div>
+        <div class="campo">
+          <label for="hijos">Ingrese el nro de hijos</label>
+          <input type="number" name="hijos" id="hijos" min="0" />
+        </div>
+      </div>
+      <input type="submit" value="Calcular el sueldo final" class="btn">
+
+    </form>
+
     <!-- <script src="js/23-app.js"></script> -->
     <script src="js/24-app.js"></script>
   </body>

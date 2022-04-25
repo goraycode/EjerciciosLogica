@@ -357,7 +357,7 @@ FORMULARIO
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .vehiculo {
@@ -447,10 +447,17 @@ Formulario 2
   background-color: #da595e;
   padding: 2rem;
   margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #formulario .columnasDos {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 #formulario input {
@@ -465,6 +472,8 @@ select {
 #formulario input[type="submit"],
 .buttonReset {
   width: 20%;
+  display: block;
+  margin-top: 2rem;
   color: white;
   border-radius: 1rem;
   border: 0;
@@ -571,6 +580,6 @@ Propuesto 6
 /*====================================================
 para tik tok
 ======================================================*/
-.parrafo{
+.parrafo {
   font-size: 2rem;
 }

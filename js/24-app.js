@@ -80,3 +80,53 @@ function sumNumRepeat() {
     console.log(`La suma de los números repetidos es: ${sumaRepetidos}`);
 }
 
+
+
+//Ejercicio 3
+class Empleado {
+    constructor(codigo, nombres, area, servicio, condicion, sueldoBase, nHijos) {
+        this.codigo = codigo;
+        this.nombres = nombres;
+        this.area = area;
+        this.servicio = servicio;
+        this.condicion = condicion;
+        this.sueldoBase = sueldoBase;
+        this.nHijos = nHijos;
+    }
+    asignacionMovilidad() {
+        let movilidad = 0;
+        if (this.condicion === 'Contratado' && this.area === 'Planificacion') {
+            movilidad = this.sueldoBase * 0.07;
+        }
+        if (this.condicion === 'Contratado' && this.area === 'Ventas') {
+            movilidad = this.sueldoBase * 0.08;
+        }
+
+        if (this.condicion === 'Estable' && this.area === 'Planificacion') {
+            movilidad = this.sueldoBase * 0.09;
+        }
+        if (this.condicion === 'Contratado' && this.area === 'Ventas') {
+            movilidad = this.sueldoBase * 0.12;
+        }
+
+        return movilidad;
+    }
+
+    montoPorHijo() {
+        let monto = this.nHijos * 55;
+        return monto;
+    }
+    montoImpuesto() {
+        let impuesto = this.sueldoBase * 0.18;
+        return impuesto;
+    }
+
+    calcularSueldoFinal() {
+        let sueldoFinal = this.sueldoBase + this.asignacionMovilidad() + this.montoPorHijo() + this.montoImpuesto();
+        return sueldoFinal;
+    }
+
+    mostrarResultado() {
+        return `Sr(a) ${this.nombres} su sueldo neto es de S/.${this.calcularSueldoFinal()}`
+    }
+}
