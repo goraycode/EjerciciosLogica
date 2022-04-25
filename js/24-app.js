@@ -105,7 +105,7 @@ class Empleado {
         if (this.condicion === 'Estable' && this.area === 'Planificacion') {
             movilidad = this.sueldoBase * 0.09;
         }
-        if (this.condicion === 'Contratado' && this.area === 'Ventas') {
+        if (this.condicion === 'Estable' && this.area === 'Ventas') {
             movilidad = this.sueldoBase * 0.12;
         }
 
@@ -122,7 +122,7 @@ class Empleado {
     }
 
     calcularSueldoFinal() {
-        let sueldoFinal = this.sueldoBase + this.asignacionMovilidad() + this.montoPorHijo() + this.montoImpuesto();
+        let sueldoFinal = Number(this.sueldoBase) + Number(this.asignacionMovilidad()) + Number(this.montoPorHijo()) + Number(this.montoImpuesto());
         return sueldoFinal;
     }
 
@@ -130,3 +130,76 @@ class Empleado {
         return `Sr(a) ${this.nombres} su sueldo neto es de S/.${this.calcularSueldoFinal()}`
     }
 }
+
+
+class Interfaces {
+    mensaje(mensaje, tipo, pos) {
+        const div = document.createElement('div');
+        div.style.backgroundColor = 'white';
+        div.classList.add('mensaje', 'contenedorMensaje');
+
+        const pMensaje = document.createElement('p');
+        pMensaje.textContent = mensaje;
+
+
+        if (tipo === 'error') {
+            div.style.color = 'red';
+        } else {
+            div.style.color = 'black';
+        }
+
+
+        const getDiv = document.querySelector('.contenedorMensaje');
+        if (getDiv != null) {
+            getDiv.remove();
+        }
+        div.appendChild(pMensaje);
+
+        pos.appendChild(div);
+    }
+}
+
+
+//validamos entradas
+//variables
+const codigo = document.querySelector('#codigo');
+const nombre = document.querySelector('#nombre');
+const area = document.querySelector('#area');
+const tiempo = document.querySelector('#tiempo');
+const condicion = document.querySelector('#condicion');
+const sueldo = document.querySelector('#sueldo');
+const hijos = document.querySelector('#hijos');
+const formulario = document.querySelector('#formulario');
+
+//funciones
+eventListeners();
+function eventListeners() {
+    formulario.addEventListener('submit', validarEntrada);
+}
+
+function validarEntrada(e) {
+    e.preventDefault();
+    //vemos si alguno de los campos estan vacios
+    let inputs = [codigo, nombre, area, tiempo, condicion, sueldo, hijos];
+    const campoVacio = inputs.some(elemento => elemento.value === '');
+
+    if (campoVacio) {
+        const mensajeError = new Interfaces();
+        mensajeError.mensaje('Complete todos los campos', 'error', formulario);
+        return;
+    }
+    const getDiv = document.querySelector('.contenedorMensaje');
+    if (getDiv != null) {
+        getDiv.remove();
+    }
+
+    console.log(condicion.value, area.value);
+
+    //instanciamos la clase empleado para calcular su sueldo final
+    const empleado = new Empleado(codigo.value, nombre.value, area.value, tiempo.value, condicion.value, sueldo.value, hijos.value);
+    const mensajeCalculo = new Interfaces();
+    mensajeCalculo.mensaje(empleado.mostrarResultado(), 'success', formulario);
+
+
+}
+

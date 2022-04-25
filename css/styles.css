@@ -583,3 +583,13 @@ para tik tok
 .parrafo {
   font-size: 2rem;
 }
+
+/*====================================================
+para lo de los sueldos finales de los trabajadores
+======================================================*/
+.mensaje {
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
