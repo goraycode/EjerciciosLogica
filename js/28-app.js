@@ -60,3 +60,13 @@ function getVocal(letra) {
     }
 
 }
+
+
+function getPricesBooks(a, b, pago) {
+    let descuentoA = a * 0.08;
+    let descuentoB = b * 0.12;
+
+    let sumaTotal = (a - descuentoA) + (b - descuentoB);
+
+    return `El valor de descuento del libro a: ${descuentoA} y en b: ${descuentoB}  Valor del libro a: ${a - descuentoA} y el valor del libro b ${b - descuentoB} El total a pagar es: ${sumaTotal.toFixed(2)} Monto con el que se compro: ${pago} Cambio: ${(pago - sumaTotal).toFixed(2)}`;
+}
