@@ -36,3 +36,27 @@ function getSeason(num) {
             break;
     }
 }
+
+function getVocal(letra) {
+    let vocals = ['a', 'e', 'i', 'o', 'u'];
+    let newLetra = letra.toLowerCase();
+    let isvocal = false;
+
+    if (letra.length > 1) {
+        return 'Solo debe ingresar una letra';
+    }
+
+    for (let i = 0; i < vocals.length; i++) {
+
+        if (newLetra === vocals[i]) {
+            isvocal = true;
+        }
+    }
+
+    if (isvocal) {
+        return 'Es una letra vocal';
+    } else {
+        return 'No es una letra vocal';
+    }
+
+}
