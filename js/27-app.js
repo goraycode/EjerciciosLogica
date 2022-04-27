@@ -106,11 +106,11 @@ function validarIngreso(e) {
 
     } else {
 
-        mensajePassword.mensaje('Guardado', 'error', formulario);
+        mensajePassword.mensaje('Guardado', 'succcess', formulario);
         setTimeout(() => {
-            formulario.reset();
             const getDiv = document.querySelector('.contenedorMensaje');
             getDiv.remove();
+            formulario.reset();
         }, 3000);
 
     }

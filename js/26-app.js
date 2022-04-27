@@ -39,10 +39,10 @@ export function letraMayuscula(password) {
         }
     }
 
-    if (contieneMayuscula && contadorMayuscula == 1) {
+    if (contieneMayuscula && contadorMayuscula === 1) {
         return contieneMayuscula;
     } else {
-        return contieneMayuscula;
+        return false;
     }
 }
 
