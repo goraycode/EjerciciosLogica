@@ -443,6 +443,7 @@ input {
 /*====================================================
 Formulario 2
 ======================================================*/
+.formulario,
 #formulario {
   background-color: #da595e;
   padding: 2rem;
@@ -452,6 +453,7 @@ Formulario 2
   align-items: center;
 }
 
+.formulario .columnasDos,
 #formulario .columnasDos {
   display: flex;
   align-items: center;
@@ -460,7 +462,7 @@ Formulario 2
   gap: 1rem;
 }
 
-#formulario input {
+.formulario input {
   padding: 0.5rem;
   outline: none;
 }
@@ -470,6 +472,7 @@ select {
 }
 
 #formulario input[type="submit"],
+.formulario input[type="submit"],
 .buttonReset {
   width: 20%;
   display: block;
@@ -488,6 +491,7 @@ select {
 }
 
 #formulario input[type="submit"]:hover,
+.formulario input[type="submit"]:hover,
 .buttonReset:hover {
   opacity: 0.8;
 }
@@ -592,4 +596,44 @@ para lo de los sueldos finales de los trabajadores
   padding: 1rem;
   border-radius: 1rem;
   border: 1px solid black;
+}
+
+/*====================================================
+para la gestion de alumnos
+======================================================*/
+.gestionar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gestionar .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons .btn {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+.buttons .btn:hover {
+  background-color: white;
+  color: black;
+}
+
+#formularioAlumno .btn {
+  display: none;
+}
+
+.mensajeFormulario {
+  background-color: aliceblue;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
 }

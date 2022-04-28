@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Ejercicio propuestp</title>
   </head>
   <body>
@@ -13,6 +14,43 @@
       ordenados en forma ascendente y descendente
     </p>
 
+    <div class="gestionar">
+      <h2>Gestión de alumnos</h2>
+      <form action="" id="formularioDocente" class="formulario">
+        <div class="columnasDos" id="campos">
+          <div class="campo">
+            <label for="nombreDocente">Nombre:</label>
+            <input type="text" id="nombreDocente" />
+          </div>
+          <div class="campo">
+            <label for="apellidoDocente">Apellido:</label>
+            <input
+              type="apellidoDocente"
+              name="apellidoDocente"
+              id="apellidoDocente"
+            />
+          </div>
+          <div class="campo">
+            <label for="curso">Curso:</label>
+            <input type="curso" name="curso" id="curso" />
+          </div>
+        </div>
+        <input type="submit" value="Ingresar" class="btn" />
+      </form>
+
+      <div class="buttons">
+        <button class="btn" id="btnMatricular">Matricular</button>
+        <button class="btn" id="btnBuscar">Buscar alumno</button>
+        <button class="btn" id="btnVer">Ver alumnos</button>
+      </div>
+    </div>
+
     <script src="js/28-app.js"></script>
+
+    <!-- Para la gestion de alumnos -->
+    <script src="js/29-app.js" type="module"></script>
+    <script src="js/30-app.js" type="module"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </body>
 </html>
