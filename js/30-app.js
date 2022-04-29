@@ -131,12 +131,31 @@ function matricularAlumno(e) {
         direccionAlu: direccion.value
     }
 
-    //llevamos el objeto al array
-    matriculados = [...matriculados, alumno];
-    console.log(matriculados);
+    //llevamos el objeto al array  y evitamos que se repitan 
+    let { codigoAlu } = alumno;
+
+    
+
+    const existe = matriculados.some(matriculado => matriculado.codigoAlu === codigoAlu);
+    if (existe) {
+        const matriculadosActualizados = matriculados.map(matriculado => {
+            if (matriculado.codigoAlu === codigoAlu) {
+                errorMatricula();
+            }
+
+            return matriculado;
+        });
+
+        matriculados = [...matriculadosActualizados];
+    } else {
+        matriculados = [...matriculados, alumno];
+        avisoMatriculado();
+    }
+
+    console.log(matriculados.length);
 
 
-    avisoMatriculado();
+
 }
 
 function avisoMatriculado() {
@@ -151,4 +170,17 @@ function avisoMatriculado() {
     });
     formularioBtn.style.display = 'none';
     formularioAlumno.reset();
+}
+
+
+function errorMatricula() {
+   
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Código generado esta ocupado con otro alumno matriculado',
+        showConfirmButton: false,
+        timer: 3000
+    });
+   
 }
