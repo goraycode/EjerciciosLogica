@@ -12,6 +12,8 @@ const buttons = document.querySelector('.buttons');
 const btnMatricular = document.querySelector('#btnMatricular');
 const btnBuscar = document.querySelector('#btnBuscar');
 const btnVer = document.querySelector('#btnVer');
+const table = document.querySelector('.table');
+const tbody = document.querySelector('.table__tbody');
 
 
 let matriculados = [];
@@ -34,6 +36,7 @@ function eventListeners() {
 
 function ocultos() {
     buttons.style.display = 'none';
+    table.style.display = 'none';
 }
 
 function validarDocente(e) {
@@ -60,6 +63,17 @@ function botones() {
 
         validarCamposAlumno();
     });
+
+    btnVer.addEventListener('click', () => {
+        table.style.display = 'block';
+
+        const tablaMatriculados = new UI();
+        tablaMatriculados.alumnosMatriculados(matriculados, tbody);
+
+
+
+
+    })
 }
 
 function validarCamposAlumno() {
@@ -134,25 +148,30 @@ function matricularAlumno(e) {
     //llevamos el objeto al array  y evitamos que se repitan 
     let { codigoAlu } = alumno;
 
-    
 
-    const existe = matriculados.some(matriculado => matriculado.codigoAlu === codigoAlu);
-    if (existe) {
-        const matriculadosActualizados = matriculados.map(matriculado => {
-            if (matriculado.codigoAlu === codigoAlu) {
-                errorMatricula();
-            }
 
-            return matriculado;
-        });
+    if (matriculados.length < 3) {
 
-        matriculados = [...matriculadosActualizados];
+        const existe = matriculados.some(matriculado => matriculado.codigoAlu === codigoAlu);
+        if (existe) {
+            const matriculadosActualizados = matriculados.map(matriculado => {
+                if (matriculado.codigoAlu === codigoAlu) {
+                    alertaError('Código generado esta ocupado con otro alumno matriculado');
+                }
+
+                return matriculado;
+            });
+
+            matriculados = [...matriculadosActualizados];
+        } else {
+            matriculados = [...matriculados, alumno];
+            avisoMatriculado();
+        }
     } else {
-        matriculados = [...matriculados, alumno];
-        avisoMatriculado();
+        alertaError('Se excede de alumnos matriculados, máximo 40 alumnos por aula');
     }
 
-    console.log(matriculados.length);
+
 
 
 
@@ -173,14 +192,14 @@ function avisoMatriculado() {
 }
 
 
-function errorMatricula() {
-   
+function alertaError(mensaje) {
+
     Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Código generado esta ocupado con otro alumno matriculado',
+        title: mensaje,
         showConfirmButton: false,
         timer: 3000
     });
-   
+
 }

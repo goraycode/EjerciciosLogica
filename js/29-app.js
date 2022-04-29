@@ -134,8 +134,30 @@ export class UI {
         if (getDiv !== null) {
             getDiv.remove();
         }
-
-
         posicion.appendChild(div);
+    }
+
+    alumnosMatriculados(matriculados, tbody) {
+        this.limpiarHTML(tbody);
+        matriculados.forEach((matriculado, index) => {
+            const { codigoAlu, nombreAlu, apellidoAlu, telefonoAlu, direccionAlu } = matriculado;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${codigoAlu}</td>
+                <td>${nombreAlu}</td>
+                <td>${apellidoAlu}</td>
+                <td>${telefonoAlu}</td>
+                <td>${direccionAlu}</td>
+            `;
+
+            tbody.appendChild(tr);
+        });
+    }
+
+    limpiarHTML(elemento) {
+        while (elemento.firstChild) {
+            elemento.removeChild(elemento.firstChild);
+        }
     }
 }
