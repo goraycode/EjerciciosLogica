@@ -12,8 +12,12 @@ const buttons = document.querySelector('.buttons');
 const btnMatricular = document.querySelector('#btnMatricular');
 const btnBuscar = document.querySelector('#btnBuscar');
 const btnVer = document.querySelector('#btnVer');
+const formBusqueda = document.querySelector('#formBusqueda');
+const buscar = document.querySelector('#buscar');
+
 const table = document.querySelector('.table');
 const tbody = document.querySelector('.table__tbody');
+
 
 
 let matriculados = [];
@@ -37,6 +41,7 @@ function eventListeners() {
 function ocultos() {
     buttons.style.display = 'none';
     table.style.display = 'none';
+    formBusqueda.style.display = 'none';
 }
 
 function validarDocente(e) {
@@ -69,11 +74,12 @@ function botones() {
 
         const tablaMatriculados = new UI();
         tablaMatriculados.alumnosMatriculados(matriculados, tbody);
+    });
 
-
-
-
-    })
+    btnBuscar.addEventListener('click', () => {
+        formBusqueda.style.display = 'block';
+        busquedaAlumno();
+    });
 }
 
 function validarCamposAlumno() {
@@ -150,7 +156,7 @@ function matricularAlumno(e) {
 
 
 
-    if (matriculados.length < 3) {
+    if (matriculados.length <= 40) {
 
         const existe = matriculados.some(matriculado => matriculado.codigoAlu === codigoAlu);
         if (existe) {
@@ -177,6 +183,25 @@ function matricularAlumno(e) {
 
 }
 
+function busquedaAlumno() {
+    formBusqueda.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (buscar.value === '') {
+            const mensajeError = new UI();
+            mensajeError.mensaje('Falta ingresar el código', 'error', formBusqueda);
+            return;
+        }
+
+        let alumnoEncontrado = matriculados.filter(matriculado => matriculado.codigoAlu === buscar.value);
+        if (alumnoEncontrado.length) {
+
+        }else{
+            alertaError('No se encontró alumno');
+        }
+
+    });
+}
+
 function avisoMatriculado() {
     const formularioAlumno = document.querySelector('#formularioAlumno');
     const formularioBtn = document.querySelector('#formularioAlumno .btn');
@@ -191,6 +216,9 @@ function avisoMatriculado() {
     formularioAlumno.reset();
 }
 
+function mostrarAlumnoEncontrado(busqueda) {
+    
+}
 
 function alertaError(mensaje) {
 
