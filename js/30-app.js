@@ -194,7 +194,9 @@ function busquedaAlumno() {
 
         let alumnoEncontrado = matriculados.filter(matriculado => matriculado.codigoAlu === buscar.value);
         if (alumnoEncontrado.length) {
-           console.log(alumnoEncontrado);
+            const alumnoBuscado = new UI();
+            alumnoBuscado.alumnosMatriculados(alumnoEncontrado, tbody);
+            table.style.display = 'block';
         } else {
             alertaError('No se encontró al alumno');
         }
