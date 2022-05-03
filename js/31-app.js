@@ -1,21 +1,64 @@
 let marcas = ['Toyota', 'Peugeot', 'Mazda', 'Ford', 'Mitsubishi'];
 let autos = [];
 const tbodyAutos = document.querySelector('#autos');
+const resultados = document.querySelector('#resultados');
 
-for (let i = 0; i < 5; i++) {
-    autos[i] = [];
-    for (let j = 0; j < 6; j++) {
 
-        do {
+document.addEventListener('DOMContentLoaded', () => {
+    pedirVentas();
+});
 
-            venta = Number(prompt(`Ingrese venta para el Auto: ${marcas[i]} - vendendor${j + 1}`));
-            autos[i][j] = venta;
-        } while (venta < 0);
 
+
+
+function pedirVentas() {
+    let venta, sumadorVentas = [];
+    for (let i = 0; i < 5; i++) {
+        autos[i] = [];
+        for (let j = 0; j < 6; j++) {
+
+            do {
+
+                venta = Number(prompt(`Ingrese venta para el Auto: ${marcas[i]} - vendendor${j + 1}`));
+                autos[i][j] = venta;
+
+
+            } while (venta < 0 || isNaN(venta));
+        }
+
+        sumadorVentas = [...sumadorVentas, autos[i].reduce((acc, venta) => acc + venta, 0)];
     }
+
+
+    llenarTabla(autos);
+    reportes(sumadorVentas);
 }
 
-llenarTabla(autos);
+
+function reportes(ventas) {
+
+    let mayor = 0, position = 0;
+    let autoMasVendido = Math.max(...ventas);
+
+    ventas.forEach((venta, index) => {
+        if (venta > mayor) {
+            mayor = venta
+            position = index;
+        }
+    });
+
+
+
+    const p = document.createElement('p');
+    p.textContent = `El auto más vendido es ${marcas[position]} con ${autoMasVendido} autos vendidos`;
+
+    resultados.appendChild(p);
+}
+
+
+
+
+
 
 function llenarTabla(autosVendidos) {
     autosVendidos.forEach((venta, index) => {
@@ -31,10 +74,10 @@ function llenarTabla(autosVendidos) {
             tr.appendChild(tdVenta);
         }
 
-
         tbodyAutos.appendChild(tr);
 
 
     });
 }
+
 
