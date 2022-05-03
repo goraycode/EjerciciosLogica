@@ -38,11 +38,11 @@ function pedirVentas() {
 function reportes(ventas) {
 
     let mayor = 0, position = 0;
-    let autoMasVendido = Math.max(...ventas);
+    let total = ventas.reduce((acu, venta) => acu + venta, 0);
 
     ventas.forEach((venta, index) => {
         if (venta > mayor) {
-            mayor = venta
+            mayor = venta;
             position = index;
         }
     });
@@ -50,9 +50,13 @@ function reportes(ventas) {
 
 
     const p = document.createElement('p');
-    p.textContent = `El auto más vendido es ${marcas[position]} con ${autoMasVendido} autos vendidos`;
+    p.textContent = `El auto más vendido es ${marcas[position]} con ${mayor} autos vendidos`;
+
+    const pTotal = document.createElement('p');
+    pTotal.textContent = `El total de autos vendidos es ${total}`;
 
     resultados.appendChild(p);
+    resultados.appendChild(pTotal);
 }
 
 
