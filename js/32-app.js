@@ -3,8 +3,9 @@ function calcular(array, i = 0) {
         return 1;
     }
 
-    let menor = Math.max(...array);
-    if (!(array[i] < menor)) {
+    let mayor = Math.min(...array);
+
+    if (!(array[i] > mayor)) {
         console.log(`El minimo elemento es ${array[i]} esta en la posicion ${i}`);
     }
 
@@ -15,5 +16,5 @@ function calcular(array, i = 0) {
 }
 
 
-let array = [11, 43, 54.3, 23, 34, 12, 3, 43];
+let array = [321,3,1,345,76,21,3];
 calcular(array);
