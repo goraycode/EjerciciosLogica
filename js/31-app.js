@@ -40,6 +40,7 @@ function reportes(ventas) {
     let mayor = 0, position = 0;
     let total = ventas.reduce((acu, venta) => acu + venta, 0);
 
+    //indicar que auto se vende más
     ventas.forEach((venta, index) => {
         if (venta > mayor) {
             mayor = venta;
@@ -48,16 +49,43 @@ function reportes(ventas) {
     });
 
 
+    //obtenemos el menor cantidad vendida
+    let vendedorMenosVentas = sumadorPorColumna(autos);
+    let psM = 0, menor = Math.max(...sumadorPorColumna(autos))
+    vendedorMenosVentas.forEach((vendedor, index) => {
+        if (vendedor < menor) {
+            menor = vendedor;
+            psM = index;
+        }
+    });
+    console.log(vendedorMenosVentas);
+
 
     const p = document.createElement('p');
     p.textContent = `El auto más vendido es ${marcas[position]} con ${mayor} autos vendidos`;
 
+    const pVendedor = document.createElement('p');
+    pVendedor.textContent = `El vendedor que menos vendio es ${psM + 1} con ${menor} autos vendidos`;
+
     const pTotal = document.createElement('p');
     pTotal.textContent = `El total de autos vendidos es ${total}`;
 
+
     resultados.appendChild(p);
+    resultados.appendChild(pVendedor);
     resultados.appendChild(pTotal);
 }
+
+//encontrar la menor o mayor cantidad vendida de una columna
+const sumadorPorColumna = array => {
+    return array.reduce((acc, valorActual) => {
+        for (let i = 0; i < acc.length; i++) {
+            acc[i] += valorActual[i];
+        }
+        return acc;
+    }, new Array(array[0].length).fill(0));
+
+};
 
 
 
@@ -83,5 +111,4 @@ function llenarTabla(autosVendidos) {
 
     });
 }
-
 
